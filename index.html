@@ -6,7 +6,7 @@
   <title>Mots croisés – Grille 25-297</title>
   <style>
     :root{
-      --cell: min(7.2vw, 42px);
+      --cell: min(7.2vw, 44px);
       --gap: 2px;
       --bg: #ffffff;
       --ink: #111;
@@ -14,376 +14,490 @@
       --black: #111;
       --border: #cfcfcf;
       --focus: #000;
-      --radius: 10px;
+      --radius: 12px;
     }
     body{
-      margin: 0;
+      margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: #f6f6f6;
-      color: var(--ink);
+      background:#f6f6f6;
+      color:var(--ink);
     }
     header{
-      padding: 14px 14px 10px;
-      background: var(--bg);
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid #e6e6e6;
+      background: var(--bg);
+      border-bottom: 1px solid #e8e8e8;
+      padding: 14px 14px 10px;
     }
     h1{
-      font-size: 16px;
-      margin: 0 0 8px 0;
-      font-weight: 700;
+      margin:0 0 6px 0;
+      font-size: 18px;
+      line-height: 1.2;
     }
-    .actions{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .sub{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size: 13px;
     }
-    button{
-      border: 1px solid #ddd;
-      background: #fff;
-      padding: 10px 12px;
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 6px 10px;
+      border:1px solid #e6e6e6;
       border-radius: 999px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+      background:#fafafa;
+      color:#333;
+      cursor:pointer;
+      user-select:none;
     }
-    button:active{ transform: translateY(1px); }
+    .pill:active{ transform: translateY(1px); }
     .wrap{
+      max-width: 920px;
+      margin: 0 auto;
       padding: 14px;
-      display: grid;
-      gap: 14px;
+      padding-bottom: 30px;
     }
-
     .card{
       background: var(--bg);
-      border: 1px solid #e6e6e6;
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(0,0,0,.04);
-      overflow: hidden;
+      border: 1px solid #e9e9e9;
+      border-radius: var(--radius);
+      box-shadow: 0 1px 8px rgba(0,0,0,.04);
+      padding: 14px;
+      margin-bottom: 14px;
     }
-    .card .card-h{
-      padding: 12px 14px;
-      border-bottom: 1px solid #f0f0f0;
+    .gridTitle{
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .gridTitle b{ font-size: 16px; }
+    .autosave{
+      font-size: 12px;
+      color: var(--muted);
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap: 10px;
+      gap:6px;
+      white-space:nowrap;
     }
-    .card .card-h b{ font-size: 14px; }
-    .card .card-b{ padding: 14px; }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:#18a558;
+      display:inline-block;
+    }
 
-    /* Grid */
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(12, var(--cell));
-      grid-template-rows: repeat(10, var(--cell));
-      gap: var(--gap);
-      justify-content: center;
-      user-select: none;
-      touch-action: manipulation;
+    /* Grille avec entêtes (1 colonne + 12 cols) x (1 ligne + 10 lignes) */
+    .gridWrap{
+      overflow:auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
     }
-    .cell{
-      width: var(--cell);
-      height: var(--cell);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fff;
+    .grid{
+      display:grid;
+      grid-template-columns: calc(var(--cell) * 0.72) repeat(12, var(--cell));
+      grid-template-rows: calc(var(--cell) * 0.72) repeat(10, var(--cell));
+      gap: var(--gap);
+      align-items: stretch;
+      justify-items: stretch;
+      width: max-content;
+      margin: 0 auto;
+    }
+    .hdr{
       display:flex;
       align-items:center;
       justify-content:center;
-      overflow:hidden;
+      font-size: 12px;
+      color:#333;
+      background:#f3f3f3;
+      border:1px solid #e1e1e1;
+      border-radius: 10px;
+      user-select:none;
     }
-    .cell.black{
+    .corner{ background: transparent; border: none; }
+    .cell, .blk{
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+    .blk{
       background: var(--black);
       border-color: var(--black);
     }
-    .cell input{
+    input.cell{
       width: 100%;
       height: 100%;
-      border: 0;
-      outline: none;
-      text-align: center;
-      font-size: calc(var(--cell) * 0.55);
-      font-weight: 800;
-      text-transform: uppercase;
-      background: transparent;
+      text-align:center;
+      font-size: 20px;
+      font-weight: 650;
+      border: 1px solid var(--border);
+      outline:none;
+      background: #fff;
       color: var(--ink);
-      caret-color: transparent; /* évite un curseur gênant sur mobile */
+      text-transform: uppercase;
+      caret-color: transparent;
+      padding:0;
     }
-    .cell input:focus{
-      outline: 3px solid var(--focus);
-      outline-offset: -3px;
-      border-radius: 8px;
+    input.cell:focus{
+      border-color: var(--focus);
+      box-shadow: 0 0 0 2px rgba(0,0,0,.08);
     }
 
-    details summary{
-      cursor: pointer;
-      padding: 12px 14px;
-      font-weight: 800;
-      list-style: none;
+    .hint{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
     }
-    details summary::-webkit-details-marker{ display:none; }
+
+    h2{
+      margin: 0 0 8px 0;
+      font-size: 16px;
+    }
     .clues{
-      padding: 0 14px 14px;
-      color: var(--ink);
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media(min-width: 860px){
+      .clues{ grid-template-columns: 1fr 1fr; }
+    }
+    .clueBlock{
+      background:#fff;
+      border:1px solid #eee;
+      border-radius: var(--radius);
+      padding: 12px;
+    }
+    .clueBlock h3{
+      margin:0 0 8px 0;
+      font-size: 14px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .clueList{
+      margin:0;
+      padding-left: 18px;
+      color:#222;
       line-height: 1.35;
       font-size: 14px;
     }
-    .clues p{ margin: 8px 0; }
-    .muted{ color: var(--muted); font-size: 12px; margin-top: 8px; }
-
-    .footer-note{
-      text-align:center;
-      color: var(--muted);
+    .clueList li{ margin: 6px 0; }
+    .footerNote{
+      margin-top: 8px;
       font-size: 12px;
-      padding: 0 14px 14px;
+      color: var(--muted);
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Mots croisés – Grille n°25-297 (à remplir)</h1>
-    <div class="actions">
-      <button id="clearBtn" type="button">Effacer la grille</button>
-      <button id="exportBtn" type="button">Copier ma grille (texte)</button>
+<header>
+  <h1>Mots croisés – Grille n°25-297 (à remplir)</h1>
+  <div class="sub">
+    <div class="pill" id="btnClear">Effacer la grille</div>
+    <div class="pill" id="btnCopy">Copier ma grille (texte)</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <div class="gridTitle">
+      <b>Grille (10 × 12)</b>
+      <div class="autosave"><span class="dot"></span> Sauvegarde auto ✓</div>
     </div>
-  </header>
 
-  <main class="wrap">
-    <section class="card">
-      <div class="card-h">
-        <b>Grille (10 × 12)</b>
-        <span class="muted">Sauvegarde auto ✓</span>
+    <div class="gridWrap">
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="hint">
+      Astuce : tape une lettre → passe automatiquement à la case suivante. Retour arrière = case précédente. Flèches = navigation.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Définitions</h2>
+    <div class="clues">
+      <div class="clueBlock">
+        <h3>Horizontalement</h3>
+        <ol class="clueList" type="I">
+          <li>S’installa dans les bras d’Hypnos. Boules hollandaises.</li>
+          <li>Dure essence des tropiques. Drame lyrique souvent sacré.</li>
+          <li>Leurs danses et leur fumée font des volutes. Carte sur table.</li>
+          <li>Vous pouvez le chercher longtemps. Vieux messieurs.</li>
+          <li>Espace qui laisse une trace une fois renversé. Déesse de l’aurore. Paresseux.</li>
+          <li>Fit tomber les prunes. Communauté paysanne russe.</li>
+          <li>Partie de la partie. Eut confiance.</li>
+          <li>Espace de choix. Part aussi du coeur.</li>
+          <li>Tombait froidement en douceur.</li>
+          <li>Pièges. Manifestation d’hostilité.</li>
+        </ol>
       </div>
-      <div class="card-b">
-        <div id="grid" class="grid" aria-label="Grille de mots croisés"></div>
-        <div class="muted">Astuce : tape une lettre → passe automatiquement à la case suivante. Retour arrière = case précédente.</div>
+
+      <div class="clueBlock">
+        <h3>Verticalement</h3>
+        <ol class="clueList">
+          <li>Bon ou mauvais moyen pour sortir du sujet.</li>
+          <li>Chargées de substances calmantes et dangereuses.</li>
+          <li>Rejetons notre propos.</li>
+          <li>Danoise en mer Baltique. Article.</li>
+          <li>Enfant de Créuse. S’adresse avec familiarité.</li>
+          <li>Donne de l’intensité. Chasse le poulet faisandé.</li>
+          <li>Partie du monde. Découpage historique.</li>
+          <li>Conjonction. Vents mauvais. Interjection.</li>
+          <li>Sommets montagneux. Lâcha les gaz.</li>
+          <li>Dieu de la violence et de la guerre. Créai le désordre.</li>
+          <li>Unité de temps. Fait sonner les cloches.</li>
+          <li>N’a sûrement pas ce qu’elle désire.</li>
+        </ol>
       </div>
-    </section>
+    </div>
 
-    <section class="card">
-      <details open>
-        <summary>Horizontalement</summary>
-        <div class="clues">
-          <p><b>I.</b> S’installa dans les bras d’Hypnos. Boules hollandaises.</p>
-          <p><b>II.</b> Dure essence des tropiques. Drame lyrique souvent sacré.</p>
-          <p><b>III.</b> Leurs danses et leur fumée font des volutes. Carte sur table.</p>
-          <p><b>IV.</b> Vous pouvez le chercher longtemps. Vieux messieurs.</p>
-          <p><b>V.</b> Espace qui laisse une trace une fois renversé. Déesse de l’aurore. Paresseux.</p>
-          <p><b>VI.</b> Fit tomber les prunes. Communauté paysanne russe.</p>
-          <p><b>VII.</b> Partie de la partie. Eut confiance.</p>
-          <p><b>VIII.</b> Espace de choix. Part aussi du cœur.</p>
-          <p><b>IX.</b> Tombait froidement en douceur.</p>
-          <p><b>X.</b> Pièges. Manifestation d’hostilité.</p>
-        </div>
-      </details>
-    </section>
-
-    <section class="card">
-      <details>
-        <summary>Verticalement</summary>
-        <div class="clues">
-          <p><b>1.</b> Bon ou mauvais moyen pour sortir du sujet.</p>
-          <p><b>2.</b> Chargées de substances calmantes et dangereuses.</p>
-          <p><b>3.</b> Rejetons notre propos.</p>
-          <p><b>4.</b> Danoise en mer Baltique. Article.</p>
-          <p><b>5.</b> Enfant de Creuse. S’adresse avec familiarité.</p>
-          <p><b>6.</b> Donne de l’intensité. Chasse le poulet faisandé.</p>
-          <p><b>7.</b> Partie du monde. Découpage historique.</p>
-          <p><b>8.</b> Conjonction. Vents mauvais. Interjection.</p>
-          <p><b>9.</b> Sommets montagneux. Lâcha les gaz.</p>
-          <p><b>10.</b> Dieu de la violence et de la guerre. Créai le désordre.</p>
-          <p><b>11.</b> Unité de temps. Fait sonner les cloches.</p>
-          <p><b>12.</b> N’a sûrement pas ce qu’elle désire.</p>
-        </div>
-      </details>
-    </section>
-
-    <div class="footer-note">Si tu veux, je peux aussi te faire une version “cases numérotées + navigation horizontale/verticale”.</div>
-  </main>
+    <div class="footerNote">
+      (Remarque : cette page ne calcule pas la solution ; elle sert à remplir et conserver votre saisie.)
+    </div>
+  </div>
+</div>
 
 <script>
-  // --- Grille 10x12 (I..X, 1..12) ---
-  const ROWS = 10, COLS = 12;
+(function(){
+  const PUZZLE_ID = "mots-croises-25-297";
+  const rows = 10, cols = 12;
 
-  // Cases noires (1-indexées): r,c
-  const BLACKS = new Set([
-    "1,7",
-    "2,4",
-    "3,8",
-    "4,5","4,11",
-    "5,6","5,10",
-    "6,7","6,9",
-    "7,4","7,6",
-    "8,8",
-    "9,2",
-    "10,7"
+  // Noir = 1, Blanc = 0
+  // D'après la grille (10x12) : noirs aux positions :
+  // (1,7), (2,4), (3,8), (4,5)(4,11), (5,6)(5,10), (6,7)(6,9),
+  // (7,4)(7,6), (8,8), (9,2), (10,7)
+  const blacks = new Set([
+    key(1,7),
+    key(2,4),
+    key(3,8),
+    key(4,5), key(4,11),
+    key(5,6), key(5,10),
+    key(6,7), key(6,9),
+    key(7,4), key(7,6),
+    key(8,8),
+    key(9,2),
+    key(10,7)
   ]);
 
-  const STORAGE_KEY = "mc_25_297_v1";
+  const roman = ["I","II","III","IV","V","VI","VII","VIII","IX","X"];
 
   const gridEl = document.getElementById("grid");
+  const btnClear = document.getElementById("btnClear");
+  const btnCopy = document.getElementById("btnCopy");
 
-  function isBlack(r,c){ return BLACKS.has(`${r},${c}`); }
+  // --- Build grid with headers ---
+  // (0,0) corner
+  gridEl.appendChild(makeHdr("", true));
 
-  function buildGrid(){
-    gridEl.innerHTML = "";
-    const inputs = [];
+  // Top headers 1..12
+  for(let c=1;c<=cols;c++){
+    const h = makeHdr(String(c));
+    gridEl.appendChild(h);
+  }
 
-    for(let r=1;r<=ROWS;r++){
-      for(let c=1;c<=COLS;c++){
-        const cell = document.createElement("div");
-        cell.className = "cell" + (isBlack(r,c) ? " black" : "");
-        cell.dataset.r = r;
-        cell.dataset.c = c;
+  // Rows
+  for(let r=1;r<=rows;r++){
+    // Left header roman
+    gridEl.appendChild(makeHdr(roman[r-1]));
 
-        if(!isBlack(r,c)){
-          const inp = document.createElement("input");
-          inp.type = "text";
-          inp.inputMode = "text";
-          inp.autocapitalize = "characters";
-          inp.autocomplete = "off";
-          inp.maxLength = 1;
-          inp.dataset.r = r;
-          inp.dataset.c = c;
+    for(let c=1;c<=cols;c++){
+      if(blacks.has(key(r,c))){
+        const blk = document.createElement("div");
+        blk.className = "blk";
+        blk.setAttribute("aria-label", `Noir ${roman[r-1]}-${c}`);
+        gridEl.appendChild(blk);
+      } else {
+        const inp = document.createElement("input");
+        inp.className = "cell";
+        inp.type = "text";
+        inp.inputMode = "latin";
+        inp.maxLength = 1;
+        inp.autocomplete = "off";
+        inp.spellcheck = false;
+        inp.dataset.r = r;
+        inp.dataset.c = c;
+        inp.setAttribute("aria-label", `Case ${roman[r-1]}-${c}`);
 
-          cell.appendChild(inp);
-          inputs.push(inp);
-        }
-        gridEl.appendChild(cell);
+        inp.addEventListener("input", (e) => {
+          const v = (inp.value || "").toUpperCase();
+          inp.value = (v.match(/[A-ZÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸÆŒ]/i) ? v[0] : "");
+          save();
+          if(inp.value){
+            focusNext(r,c);
+          }
+        });
+
+        inp.addEventListener("keydown", (e) => {
+          const k = e.key;
+
+          if(k === "Backspace"){
+            if(inp.value){
+              inp.value = "";
+              save();
+              e.preventDefault();
+              return;
+            }
+            e.preventDefault();
+            focusPrev(r,c);
+            return;
+          }
+
+          if(k === "ArrowRight"){ e.preventDefault(); focusNext(r,c); return; }
+          if(k === "ArrowLeft"){ e.preventDefault(); focusPrev(r,c); return; }
+          if(k === "ArrowDown"){ e.preventDefault(); focusDown(r,c); return; }
+          if(k === "ArrowUp"){ e.preventDefault(); focusUp(r,c); return; }
+
+          // Enter = go next
+          if(k === "Enter"){ e.preventDefault(); focusNext(r,c); return; }
+        });
+
+        gridEl.appendChild(inp);
       }
     }
-
-    // indexation linéaire (ordre lecture)
-    inputs.forEach((inp, idx) => inp.dataset.idx = idx);
-
-    // Restore
-    restore(inputs);
-
-    // Events
-    inputs.forEach(inp => {
-      inp.addEventListener("input", (e) => {
-        const v = (inp.value || "").toUpperCase();
-        inp.value = v.replace(/[^A-ZÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸ]/g, "").slice(0,1);
-
-        save(inputs);
-
-        if(inp.value){
-          focusNext(inputs, Number(inp.dataset.idx));
-        }
-      });
-
-      inp.addEventListener("keydown", (e) => {
-        const idx = Number(inp.dataset.idx);
-        if(e.key === "Backspace"){
-          if(inp.value){
-            // laisse le backspace effacer la lettre, puis sauvegarde
-            setTimeout(()=>save(inputs), 0);
-          }else{
-            e.preventDefault();
-            focusPrev(inputs, idx);
-          }
-        }else if(e.key === "ArrowRight"){ e.preventDefault(); focusNext(inputs, idx); }
-        else if(e.key === "ArrowLeft"){ e.preventDefault(); focusPrev(inputs, idx); }
-        else if(e.key === "ArrowDown"){ e.preventDefault(); focusNextRow(inputs, inp, +1); }
-        else if(e.key === "ArrowUp"){ e.preventDefault(); focusNextRow(inputs, inp, -1); }
-      });
-
-      // Sur mobile, sélectionner facilement
-      inp.addEventListener("focus", () => inp.select());
-    });
-
-    // Tap sur une case blanche => focus
-    gridEl.addEventListener("click", (e) => {
-      const cell = e.target.closest(".cell");
-      if(!cell || cell.classList.contains("black")) return;
-      const input = cell.querySelector("input");
-      if(input) input.focus();
-    });
   }
 
-  function focusNext(inputs, idx){
-    for(let i=idx+1;i<inputs.length;i++){
-      inputs[i].focus();
-      return;
-    }
-  }
-  function focusPrev(inputs, idx){
-    for(let i=idx-1;i>=0;i--){
-      inputs[i].focus();
-      return;
-    }
-  }
+  // --- Load saved ---
+  load();
 
-  // Cherche la case la plus proche même colonne, rangée suivante/précédente
-  function focusNextRow(inputs, current, dir){
-    const r = Number(current.dataset.r);
-    const c = Number(current.dataset.c);
-    const targetR = r + dir;
-    if(targetR < 1 || targetR > ROWS) return;
+  // --- Buttons ---
+  btnClear.addEventListener("click", () => {
+    if(!confirm("Effacer toutes les lettres de la grille ?")) return;
+    document.querySelectorAll("input.cell").forEach(i => i.value = "");
+    save();
+    // focus first
+    const first = document.querySelector('input.cell');
+    if(first) first.focus();
+  });
 
-    const found = inputs.find(inp => Number(inp.dataset.r) === targetR && Number(inp.dataset.c) === c);
-    if(found) found.focus();
-  }
-
-  function save(inputs){
-    const data = {};
-    inputs.forEach(inp => {
-      const key = `${inp.dataset.r},${inp.dataset.c}`;
-      if(inp.value) data[key] = inp.value;
-    });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }
-
-  function restore(inputs){
+  btnCopy.addEventListener("click", async () => {
+    const text = exportText();
     try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw) return;
-      const data = JSON.parse(raw);
-      inputs.forEach(inp => {
-        const key = `${inp.dataset.r},${inp.dataset.c}`;
-        inp.value = (data[key] || "");
-      });
-    }catch(_){}
+      await navigator.clipboard.writeText(text);
+      alert("Grille copiée dans le presse-papiers ✅");
+    }catch(err){
+      // fallback
+      prompt("Copiez ce texte :", text);
+    }
+  });
+
+  // --- Helpers ---
+  function key(r,c){ return r + "," + c; }
+
+  function makeHdr(txt, isCorner=false){
+    const d = document.createElement("div");
+    d.className = "hdr" + (isCorner ? " corner" : "");
+    d.textContent = txt;
+    return d;
   }
 
-  function clearAll(){
-    const inputs = gridEl.querySelectorAll("input");
-    inputs.forEach(i => i.value = "");
-    localStorage.removeItem(STORAGE_KEY);
-    if(inputs[0]) inputs[0].focus();
+  function cellAt(r,c){
+    return document.querySelector(`input.cell[data-r="${r}"][data-c="${c}"]`);
+  }
+
+  function isBlack(r,c){
+    return blacks.has(key(r,c));
+  }
+
+  function focusNext(r,c){
+    // move to next white cell (row-major)
+    let rr=r, cc=c;
+    for(let n=0;n<rows*cols;n++){
+      cc++;
+      if(cc>cols){ cc=1; rr++; }
+      if(rr>rows){ rr=1; }
+      if(!isBlack(rr,cc)){
+        const el = cellAt(rr,cc);
+        if(el){ el.focus(); return; }
+      }
+    }
+  }
+
+  function focusPrev(r,c){
+    let rr=r, cc=c;
+    for(let n=0;n<rows*cols;n++){
+      cc--;
+      if(cc<1){ cc=cols; rr--; }
+      if(rr<1){ rr=rows; }
+      if(!isBlack(rr,cc)){
+        const el = cellAt(rr,cc);
+        if(el){ el.focus(); return; }
+      }
+    }
+  }
+
+  function focusDown(r,c){
+    let rr=r, cc=c;
+    for(let n=0;n<rows;n++){
+      rr++;
+      if(rr>rows) rr=1;
+      if(!isBlack(rr,cc)){
+        const el = cellAt(rr,cc);
+        if(el){ el.focus(); return; }
+      }
+    }
+  }
+
+  function focusUp(r,c){
+    let rr=r, cc=c;
+    for(let n=0;n<rows;n++){
+      rr--;
+      if(rr<1) rr=rows;
+      if(!isBlack(rr,cc)){
+        const el = cellAt(rr,cc);
+        if(el){ el.focus(); return; }
+      }
+    }
+  }
+
+  function save(){
+    const data = {};
+    document.querySelectorAll("input.cell").forEach(i => {
+      const r = i.dataset.r, c = i.dataset.c;
+      data[key(r,c)] = i.value || "";
+    });
+    localStorage.setItem(PUZZLE_ID, JSON.stringify(data));
+  }
+
+  function load(){
+    const raw = localStorage.getItem(PUZZLE_ID);
+    if(!raw) return;
+    let data=null;
+    try{ data = JSON.parse(raw); }catch(e){ return; }
+    document.querySelectorAll("input.cell").forEach(i => {
+      const k = key(i.dataset.r, i.dataset.c);
+      if(typeof data[k] === "string") i.value = data[k];
+    });
   }
 
   function exportText(){
-    // Exporte en 10 lignes de 12 caractères (█ pour noir, . vide, lettres sinon)
-    let out = "";
-    for(let r=1;r<=ROWS;r++){
+    // export grille en 10 lignes, avec # pour noir, . pour vide, lettre sinon
+    const lines = [];
+    for(let r=1;r<=rows;r++){
       let line = "";
-      for(let c=1;c<=COLS;c++){
-        if(isBlack(r,c)) line += "█";
+      for(let c=1;c<=cols;c++){
+        if(isBlack(r,c)) line += "#";
         else{
-          const inp = gridEl.querySelector(`input[data-r="${r}"][data-c="${c}"]`);
-          line += (inp && inp.value) ? inp.value : ".";
+          const v = (cellAt(r,c)?.value || "");
+          line += v ? v.toUpperCase() : ".";
         }
       }
-      out += line + (r<ROWS ? "\n" : "");
+      lines.push(roman[r-1] + " " + line);
     }
-    navigator.clipboard.writeText(out).then(()=>{
-      alert("Grille copiée dans le presse-papiers !");
-    }).catch(()=>{
-      alert(out);
-    });
+    return [
+      "Mots croisés – Grille 25-297",
+      "",
+      ...lines,
+      "",
+      "Légende : # = noir, . = vide"
+    ].join("\n");
   }
-
-  document.getElementById("clearBtn").addEventListener("click", () => {
-    if(confirm("Effacer toutes les lettres ?")) clearAll();
-  });
-  document.getElementById("exportBtn").addEventListener("click", exportText);
-
-  buildGrid();
+})();
 </script>
 </body>
 </html>
