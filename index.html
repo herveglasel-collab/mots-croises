@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Mots croisés – Grille 25-297</title>
+  <style>
+    :root{
+      --cell: min(7.2vw, 42px);
+      --gap: 2px;
+      --bg: #ffffff;
+      --ink: #111;
+      --muted: #666;
+      --black: #111;
+      --border: #cfcfcf;
+      --focus: #000;
+      --radius: 10px;
+    }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f6f6f6;
+      color: var(--ink);
+    }
+    header{
+      padding: 14px 14px 10px;
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    h1{
+      font-size: 16px;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+    }
+    .actions{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    button{
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+    }
+    button:active{ transform: translateY(1px); }
+    .wrap{
+      padding: 14px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .card{
+      background: var(--bg);
+      border: 1px solid #e6e6e6;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.04);
+      overflow: hidden;
+    }
+    .card .card-h{
+      padding: 12px 14px;
+      border-bottom: 1px solid #f0f0f0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .card .card-h b{ font-size: 14px; }
+    .card .card-b{ padding: 14px; }
+
+    /* Grid */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(12, var(--cell));
+      grid-template-rows: repeat(10, var(--cell));
+      gap: var(--gap);
+      justify-content: center;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .cell{
+      width: var(--cell);
+      height: var(--cell);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .cell.black{
+      background: var(--black);
+      border-color: var(--black);
+    }
+    .cell input{
+      width: 100%;
+      height: 100%;
+      border: 0;
+      outline: none;
+      text-align: center;
+      font-size: calc(var(--cell) * 0.55);
+      font-weight: 800;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--ink);
+      caret-color: transparent; /* évite un curseur gênant sur mobile */
+    }
+    .cell input:focus{
+      outline: 3px solid var(--focus);
+      outline-offset: -3px;
+      border-radius: 8px;
+    }
+
+    details summary{
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 800;
+      list-style: none;
+    }
+    details summary::-webkit-details-marker{ display:none; }
+    .clues{
+      padding: 0 14px 14px;
+      color: var(--ink);
+      line-height: 1.35;
+      font-size: 14px;
+    }
+    .clues p{ margin: 8px 0; }
+    .muted{ color: var(--muted); font-size: 12px; margin-top: 8px; }
+
+    .footer-note{
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 0 14px 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Mots croisés – Grille n°25-297 (à remplir)</h1>
+    <div class="actions">
+      <button id="clearBtn" type="button">Effacer la grille</button>
+      <button id="exportBtn" type="button">Copier ma grille (texte)</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="card-h">
+        <b>Grille (10 × 12)</b>
+        <span class="muted">Sauvegarde auto ✓</span>
+      </div>
+      <div class="card-b">
+        <div id="grid" class="grid" aria-label="Grille de mots croisés"></div>
+        <div class="muted">Astuce : tape une lettre → passe automatiquement à la case suivante. Retour arrière = case précédente.</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <details open>
+        <summary>Horizontalement</summary>
+        <div class="clues">
+          <p><b>I.</b> S’installa dans les bras d’Hypnos. Boules hollandaises.</p>
+          <p><b>II.</b> Dure essence des tropiques. Drame lyrique souvent sacré.</p>
+          <p><b>III.</b> Leurs danses et leur fumée font des volutes. Carte sur table.</p>
+          <p><b>IV.</b> Vous pouvez le chercher longtemps. Vieux messieurs.</p>
+          <p><b>V.</b> Espace qui laisse une trace une fois renversé. Déesse de l’aurore. Paresseux.</p>
+          <p><b>VI.</b> Fit tomber les prunes. Communauté paysanne russe.</p>
+          <p><b>VII.</b> Partie de la partie. Eut confiance.</p>
+          <p><b>VIII.</b> Espace de choix. Part aussi du cœur.</p>
+          <p><b>IX.</b> Tombait froidement en douceur.</p>
+          <p><b>X.</b> Pièges. Manifestation d’hostilité.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary>Verticalement</summary>
+        <div class="clues">
+          <p><b>1.</b> Bon ou mauvais moyen pour sortir du sujet.</p>
+          <p><b>2.</b> Chargées de substances calmantes et dangereuses.</p>
+          <p><b>3.</b> Rejetons notre propos.</p>
+          <p><b>4.</b> Danoise en mer Baltique. Article.</p>
+          <p><b>5.</b> Enfant de Creuse. S’adresse avec familiarité.</p>
+          <p><b>6.</b> Donne de l’intensité. Chasse le poulet faisandé.</p>
+          <p><b>7.</b> Partie du monde. Découpage historique.</p>
+          <p><b>8.</b> Conjonction. Vents mauvais. Interjection.</p>
+          <p><b>9.</b> Sommets montagneux. Lâcha les gaz.</p>
+          <p><b>10.</b> Dieu de la violence et de la guerre. Créai le désordre.</p>
+          <p><b>11.</b> Unité de temps. Fait sonner les cloches.</p>
+          <p><b>12.</b> N’a sûrement pas ce qu’elle désire.</p>
+        </div>
+      </details>
+    </section>
+
+    <div class="footer-note">Si tu veux, je peux aussi te faire une version “cases numérotées + navigation horizontale/verticale”.</div>
+  </main>
+
+<script>
+  // --- Grille 10x12 (I..X, 1..12) ---
+  const ROWS = 10, COLS = 12;
+
+  // Cases noires (1-indexées): r,c
+  const BLACKS = new Set([
+    "1,7",
+    "2,4",
+    "3,8",
+    "4,5","4,11",
+    "5,6","5,10",
+    "6,7","6,9",
+    "7,4","7,6",
+    "8,8",
+    "9,2",
+    "10,7"
+  ]);
+
+  const STORAGE_KEY = "mc_25_297_v1";
+
+  const gridEl = document.getElementById("grid");
+
+  function isBlack(r,c){ return BLACKS.has(`${r},${c}`); }
+
+  function buildGrid(){
+    gridEl.innerHTML = "";
+    const inputs = [];
+
+    for(let r=1;r<=ROWS;r++){
+      for(let c=1;c<=COLS;c++){
+        const cell = document.createElement("div");
+        cell.className = "cell" + (isBlack(r,c) ? " black" : "");
+        cell.dataset.r = r;
+        cell.dataset.c = c;
+
+        if(!isBlack(r,c)){
+          const inp = document.createElement("input");
+          inp.type = "text";
+          inp.inputMode = "text";
+          inp.autocapitalize = "characters";
+          inp.autocomplete = "off";
+          inp.maxLength = 1;
+          inp.dataset.r = r;
+          inp.dataset.c = c;
+
+          cell.appendChild(inp);
+          inputs.push(inp);
+        }
+        gridEl.appendChild(cell);
+      }
+    }
+
+    // indexation linéaire (ordre lecture)
+    inputs.forEach((inp, idx) => inp.dataset.idx = idx);
+
+    // Restore
+    restore(inputs);
+
+    // Events
+    inputs.forEach(inp => {
+      inp.addEventListener("input", (e) => {
+        const v = (inp.value || "").toUpperCase();
+        inp.value = v.replace(/[^A-ZÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸ]/g, "").slice(0,1);
+
+        save(inputs);
+
+        if(inp.value){
+          focusNext(inputs, Number(inp.dataset.idx));
+        }
+      });
+
+      inp.addEventListener("keydown", (e) => {
+        const idx = Number(inp.dataset.idx);
+        if(e.key === "Backspace"){
+          if(inp.value){
+            // laisse le backspace effacer la lettre, puis sauvegarde
+            setTimeout(()=>save(inputs), 0);
+          }else{
+            e.preventDefault();
+            focusPrev(inputs, idx);
+          }
+        }else if(e.key === "ArrowRight"){ e.preventDefault(); focusNext(inputs, idx); }
+        else if(e.key === "ArrowLeft"){ e.preventDefault(); focusPrev(inputs, idx); }
+        else if(e.key === "ArrowDown"){ e.preventDefault(); focusNextRow(inputs, inp, +1); }
+        else if(e.key === "ArrowUp"){ e.preventDefault(); focusNextRow(inputs, inp, -1); }
+      });
+
+      // Sur mobile, sélectionner facilement
+      inp.addEventListener("focus", () => inp.select());
+    });
+
+    // Tap sur une case blanche => focus
+    gridEl.addEventListener("click", (e) => {
+      const cell = e.target.closest(".cell");
+      if(!cell || cell.classList.contains("black")) return;
+      const input = cell.querySelector("input");
+      if(input) input.focus();
+    });
+  }
+
+  function focusNext(inputs, idx){
+    for(let i=idx+1;i<inputs.length;i++){
+      inputs[i].focus();
+      return;
+    }
+  }
+  function focusPrev(inputs, idx){
+    for(let i=idx-1;i>=0;i--){
+      inputs[i].focus();
+      return;
+    }
+  }
+
+  // Cherche la case la plus proche même colonne, rangée suivante/précédente
+  function focusNextRow(inputs, current, dir){
+    const r = Number(current.dataset.r);
+    const c = Number(current.dataset.c);
+    const targetR = r + dir;
+    if(targetR < 1 || targetR > ROWS) return;
+
+    const found = inputs.find(inp => Number(inp.dataset.r) === targetR && Number(inp.dataset.c) === c);
+    if(found) found.focus();
+  }
+
+  function save(inputs){
+    const data = {};
+    inputs.forEach(inp => {
+      const key = `${inp.dataset.r},${inp.dataset.c}`;
+      if(inp.value) data[key] = inp.value;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function restore(inputs){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      const data = JSON.parse(raw);
+      inputs.forEach(inp => {
+        const key = `${inp.dataset.r},${inp.dataset.c}`;
+        inp.value = (data[key] || "");
+      });
+    }catch(_){}
+  }
+
+  function clearAll(){
+    const inputs = gridEl.querySelectorAll("input");
+    inputs.forEach(i => i.value = "");
+    localStorage.removeItem(STORAGE_KEY);
+    if(inputs[0]) inputs[0].focus();
+  }
+
+  function exportText(){
+    // Exporte en 10 lignes de 12 caractères (█ pour noir, . vide, lettres sinon)
+    let out = "";
+    for(let r=1;r<=ROWS;r++){
+      let line = "";
+      for(let c=1;c<=COLS;c++){
+        if(isBlack(r,c)) line += "█";
+        else{
+          const inp = gridEl.querySelector(`input[data-r="${r}"][data-c="${c}"]`);
+          line += (inp && inp.value) ? inp.value : ".";
+        }
+      }
+      out += line + (r<ROWS ? "\n" : "");
+    }
+    navigator.clipboard.writeText(out).then(()=>{
+      alert("Grille copiée dans le presse-papiers !");
+    }).catch(()=>{
+      alert(out);
+    });
+  }
+
+  document.getElementById("clearBtn").addEventListener("click", () => {
+    if(confirm("Effacer toutes les lettres ?")) clearAll();
+  });
+  document.getElementById("exportBtn").addEventListener("click", exportText);
+
+  buildGrid();
+</script>
+</body>
+</html>
